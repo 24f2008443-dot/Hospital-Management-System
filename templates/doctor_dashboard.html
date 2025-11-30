@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h3>Doctor Dashboard</h3>
+  <h5>{{ doc.fullname }}</h5>
+  <h6>Assigned Appointments</h6>
+  <ul>
+    {% for a in appts %}
+      <li>{{ a.date }} {{ a.time.strftime('%H:%M') }} - {{ a.status }} - <a href="/appointment/{{ a.id }}/complete">Mark Complete</a></li>
+    {% endfor %}
+  </ul>
+  <h6>Availabilities (next 7 days)</h6>
+  <ul>
+    {% for av in availabilities %}
+      <li>{{ av.date }}: {{ av.start_time.strftime('%H:%M') }} - {{ av.end_time.strftime('%H:%M') }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

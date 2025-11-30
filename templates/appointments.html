@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h3>Your Appointments</h3>
+  <ul>
+    {% for a in appts %}
+      <li>{{ a.date }} {{ a.time.strftime('%H:%M') }} — Dr. {{ a.doctor.fullname }} — {{ a.status }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

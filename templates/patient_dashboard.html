@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h3>Patient Dashboard</h3>
+  <a href="/book" class="btn btn-primary mb-3">Book Appointment</a>
+  <h5>Your Upcoming Appointments</h5>
+  <ul>
+    {% for a in upcoming %}
+      <li>{{ a.date }} {{ a.time.strftime('%H:%M') }} - Dr. {{ a.doctor.fullname }} - {{ a.status }} - <a href="/appointment/{{ a.id }}/cancel">Cancel</a></li>
+    {% endfor %}
+  </ul>
+  <h5>Doctors</h5>
+  <ul>
+    {% for d in doctors %}
+      <li>{{ d.fullname }} — {{ d.specialization }} <a href="/api/doctors/{{ d.id }}/availability">View Availability (API)</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
